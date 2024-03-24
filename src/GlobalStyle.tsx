@@ -9,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: Pretendard;
     font-weight: 500;
+    letter-spacing: 0.05em;
+    user-select:none;
   }
 `;
 

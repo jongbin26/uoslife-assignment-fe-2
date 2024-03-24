@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import { createContext } from 'react';
 import GlobalStyle from './GlobalStyle';
-
 import Login from './pages/Login';
 import Main from './pages/Main';
 
@@ -17,12 +16,27 @@ const router = createBrowserRouter([
   },
 ]);
 
+interface LoginContextType {
+  isLogin: boolean;
+  setIsLogin: (isLogin: boolean) => void;
+}
+
+const defaultSetIsLogin = () => {};
+
+export const LoginContext = createContext<LoginContextType>({
+  isLogin: false,
+  setIsLogin: defaultSetIsLogin,
+});
+
 const App = () => {
-  const [islogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
     <>
-      <GlobalStyle />
-      <RouterProvider router={router} />
+      <LoginContext.Provider value={{ isLogin, setIsLogin }}>
+        <GlobalStyle />
+        <RouterProvider router={router} />
+      </LoginContext.Provider>
     </>
   );
 };
