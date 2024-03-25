@@ -100,14 +100,14 @@ export default Todo;
 
 const TodoListWrapper = styled.div`
   display: flex;
-  width: 40%;
+  width: 700px;
   height: 75%;
   margin-top: 5%;
   border: 1px solid #d0d0d0;
   border-radius: 16px;
   box-shadow: 0 4px 24px 0 #d0d0d0;
   overflow: hidden;
-  @media screen and (min-width: 300px) {
+  @media screen and (max-width: 700px) {
     margin-top: 15%;
     width: 90%;
     height: 80%;
