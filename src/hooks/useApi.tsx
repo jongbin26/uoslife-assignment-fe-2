@@ -35,16 +35,18 @@ const useApi = () => {
             if (error.response.status === 401) {
               setIsLogin(false);
               console.log('401에러');
-              return;
+              return false;
             }
           });
         ///main으로 라우팅
         navigate('/main');
+        return true;
       }
       //access_token이 없는 경우
       else {
         checkIsRefreshTokenExpired().catch(() => {
           navigate('/');
+          return false;
         });
       }
     });

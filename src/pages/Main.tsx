@@ -6,6 +6,7 @@ import { LoginContext } from '../App';
 import checkIsLogin from '../hooks/useApi';
 import Todo from '../components/Todo';
 import styled from 'styled-components';
+import logo from '../images/Logo.svg';
 
 const Main = () => {
   const { isLogin, setIsLogin } = useContext(LoginContext);
@@ -24,6 +25,7 @@ const Main = () => {
   return (
     <MainWrapper>
       <Header>
+        <LogoImg src={logo} />
         <StyledButton onClick={clickLogout}>로그아웃</StyledButton>
       </Header>
       <Todo />
@@ -41,11 +43,17 @@ const MainWrapper = styled.div`
 `;
 const Header = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   width: 100%;
   position: fixed;
   padding: 10px;
   top: 0;
   border-bottom: 1px solid #878787;
+`;
+
+const LogoImg = styled.img`
+  width: 35px;
+  height: 35px;
+  margin: 10px;
 `;
 export default Main;

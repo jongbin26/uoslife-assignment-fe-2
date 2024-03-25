@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../App';
 import Toast from '../components/Toast';
 import loadingIcon from '../images/loading-icon.svg';
+import logo from '../images/Logo.svg';
 import { StyledButton } from '../components/Button';
 import checkIsLogin from '../hooks/useApi';
 
@@ -87,22 +88,26 @@ const Login = () => {
   return (
     <Wrapper>
       <StyledForm onSubmit={onSubmit}>
-        <StyledInput
-          type="email"
-          placeholder="이메일"
-          onChange={onEmailChange}
-          value={email}
-          ref={loginInputRef}
-        />
-        <StyledInput
-          type="password"
-          placeholder="비밀번호"
-          onChange={onPasswordChange}
-          value={password}
-        />
+        <LogoImg src={logo} />
+        <InputWrapper $loadingState={isLoading}>
+          <StyledInput
+            type="email"
+            placeholder="이메일"
+            onChange={onEmailChange}
+            value={email}
+            ref={loginInputRef}
+          />
+          <StyledInput
+            type="password"
+            placeholder="비밀번호"
+            onChange={onPasswordChange}
+            value={password}
+          />
+        </InputWrapper>
+        <LoadingIcon $loadingState={isLoading} src={loadingIcon} />
         <StyledButton type="submit">로그인</StyledButton>
       </StyledForm>
-      <LoadingIcon $loadingState={isLoading} src={loadingIcon} />
+      {/* <LoadingIcon $loadingState={isLoading} src={loadingIcon} /> */}
       <Toast toastState={isToast}>{toastMessage}</Toast>
     </Wrapper>
   );
@@ -173,13 +178,12 @@ const rotateAnimation = keyframes`
   } 
 `;
 
-type LoadingIconProps = {
+type LoadingProps = {
   $loadingState: boolean;
 };
 
-const LoadingIcon = styled.img<LoadingIconProps>`
+const LoadingIcon = styled.img<LoadingProps>`
   position: absolute;
-  top: 26%;
   opacity: 0;
   ${props =>
     props.$loadingState &&
@@ -191,6 +195,25 @@ const LoadingIcon = styled.img<LoadingIconProps>`
   transition: ease-in 0.1s;
   width: 48px;
   height: 48px;
+`;
+
+const LogoImg = styled.img`
+  width: 35px;
+  height: 35px;
+  margin: 10px;
+`;
+
+const InputWrapper = styled.div<LoadingProps>`
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  ${props =>
+    props.$loadingState &&
+    css`
+      opacity: 0;
+      transform: translateY(-10%);
+    `}
+  transition: ease-in 0.1s;
 `;
 
 export default Login;
