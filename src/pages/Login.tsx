@@ -2,12 +2,12 @@ import React, { useState, useRef } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { API } from '../api';
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../App';
-import Toast from '../components/Toast';
-import loadingIcon from '../images/loading-icon.svg';
-import logo from '../images/Logo.svg';
+import { useNavigate } from 'react-router-dom';
 import { StyledButton } from '../components/Button';
+import logo from '../images/Logo.svg';
+import loadingIcon from '../images/loading-icon.svg';
+import Toast from '../components/Toast';
 import checkIsLogin from '../hooks/useApi';
 
 interface LoginResponse {
@@ -88,6 +88,7 @@ const Login = () => {
   return (
     <Wrapper>
       <StyledForm onSubmit={onSubmit}>
+        <Toast toastState={isToast}>{toastMessage}</Toast>
         <LogoImg src={logo} />
         <InputWrapper $loadingState={isLoading}>
           <StyledInput
@@ -107,8 +108,6 @@ const Login = () => {
         <LoadingIcon $loadingState={isLoading} src={loadingIcon} />
         <StyledButton type="submit">로그인</StyledButton>
       </StyledForm>
-      {/* <LoadingIcon $loadingState={isLoading} src={loadingIcon} /> */}
-      <Toast toastState={isToast}>{toastMessage}</Toast>
     </Wrapper>
   );
 };

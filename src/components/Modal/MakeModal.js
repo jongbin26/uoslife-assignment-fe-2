@@ -26,7 +26,6 @@ const MakeModal = ({
   const clickBottomButton = () => {
     if (text.length === 0) {
       inputRef.current?.focus();
-      //toast 추가
       return;
     }
     if (type === '추가') {

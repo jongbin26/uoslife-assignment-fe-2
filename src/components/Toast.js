@@ -10,7 +10,7 @@ const Toast = ({ children, toastState }) => {
 export default Toast;
 
 const ToastContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 26%;
   padding: 12px;
 
@@ -36,5 +36,5 @@ const ToastText = styled.div`
   color: #ffffff;
   font-size: 15px;
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 `;
