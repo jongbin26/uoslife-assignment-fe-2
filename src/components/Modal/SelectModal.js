@@ -42,6 +42,11 @@ const ModalWrapper = styled.div`
   width: 400px;
   height: 250px;
 
+  @media screen and (min-width: 300px) {
+    width: 300px;
+    height: 200px;
+  }
+
   border: 1px solid #d0d0d0;
   border-radius: 16px;
   box-shadow: 0 4px 24px 0 #d0d0d0;

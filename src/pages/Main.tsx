@@ -49,6 +49,8 @@ const Header = styled.div`
   padding: 10px;
   top: 0;
   border-bottom: 1px solid #878787;
+  overflow-hidden;
+  background-color: #fff;
 `;
 
 const LogoImg = styled.img`
